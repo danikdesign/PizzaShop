@@ -1,7 +1,4 @@
-var x = 1;
-
-function something()
+function add_to_cart(id)
 {
-    alert(x);
-    x = x + 1;
+    alert('You choosed pizza with id: ' + id);
 }
