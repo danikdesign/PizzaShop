@@ -24,8 +24,8 @@ get '/about' do
 end
 
 post '/cart' do
-  orders_input = params[:orders_input]
-  @items = parse_orders_input orders_input
+  @orders_input = params[:orders_input]
+  @items = parse_orders_input @orders_input
 
   @items.each do |item|
     item[0] = @products.find(item[0])
@@ -33,6 +33,8 @@ post '/cart' do
 
   erb :cart
 end
+
+
 
 def parse_orders_input orders_input
   s1 = orders_input.split(',')
