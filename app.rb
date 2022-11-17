@@ -12,7 +12,7 @@ class Order < ActiveRecord::Base
 end
 
 before do
-  @products = Product.order 'is_best_offer DESC'
+  @products = Product.all
 end
 
 get '/' do
@@ -23,27 +23,15 @@ get '/about' do
   erb :about
 end
 
-get '/cart' do
-  erb :cart
-end
-
 post '/cart' do
   orders_input = params[:orders_input]
-  @order = parse_orders_input orders_input
+  @items = parse_orders_input orders_input
 
-
-  erb "Hello it's your order: #{@order.inspect}"
-end
-
-post '/order' do
-  @order = Order.new params[:order]
-
-  if @order.save
-    erb 'Thank you. We received your order. Our manager will contact you soon'
-  else
-    @error = @order.errors.full_messages.first
-    erb :cart
+  @items.each do |item|
+    item[0] = @products.find(item[0]).title
   end
+
+  erb :cart
 end
 
 def parse_orders_input orders_input

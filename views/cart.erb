@@ -1,32 +1,17 @@
 <h2>Your cart</h2>
-<hr />
-<table class="table">
+<table class="table table-striped">
   <thead>
   <tr>
-    <th scope="col">Product</th>
+    <th scope="col">Pizza</th>
     <th scope="col">Quantity</th>
   </tr>
   </thead>
-  <tbody id="orders">
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item[0] %></td>
+        <td><%= item[1] %></td>
+      </tr>
+    <% end %>
   </tbody>
 </table>
-
-<h4>For complete your order, please fill out the fields below:</h4>
-<form action="/cart" method="post">
-  <div class="mb-3">
-    <label for="exampleFormControlInput1" class="form-label">Your phone:</label>
-    <input name="order[phone]" type="phone" class="form-control" id="exampleFormControlInput1">
-  </div>
-  <div class="mb-3">
-    <label for="exampleFormControlInput1" class="form-label">Your name:</label>
-    <input name="order[name]" type="name" class="form-control" id="exampleFormControlInput1">
-  </div>
-  <div class="mb-3">
-    <label for="exampleFormControlInput1" class="form-label">Your address:</label>
-    <input name="order[address]" type="address" class="form-control" id="exampleFormControlInput1">
-  </div>
-  <div class="mb-3">
-  <input name="order[orders_input]" id="orders_to_db" class="form-control">
-  </div>
-  <button type="submit" class="btn btn-primary" >Submit</button>
-</form>
