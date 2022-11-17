@@ -27,3 +27,7 @@ end
 post '/cart' do
   erb :cart
 end
+
+post '/order' do
+
+end
