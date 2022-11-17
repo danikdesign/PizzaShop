@@ -28,7 +28,7 @@ post '/cart' do
   @items = parse_orders_input orders_input
 
   @items.each do |item|
-    item[0] = @products.find(item[0]).title
+    item[0] = @products.find(item[0])
   end
 
   erb :cart
