@@ -9,6 +9,11 @@ function add_to_cart(id)
     update_orders_button();
 }
 
+function orders_list() {
+
+}
+
+
 function update_orders_input()
 {
     var orders = cart_get_orders();
