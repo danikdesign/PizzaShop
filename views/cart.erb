@@ -12,28 +12,21 @@
 </table>
 
 <h4>For complete your order, please fill out the fields below:</h4>
-<form action="/order" method="post">
+<form action="/cart" method="post">
   <div class="mb-3">
     <label for="exampleFormControlInput1" class="form-label">Your phone:</label>
-    <input type="phone" class="form-control" id="exampleFormControlInput1">
+    <input name="order[phone]" type="phone" class="form-control" id="exampleFormControlInput1">
   </div>
   <div class="mb-3">
     <label for="exampleFormControlInput1" class="form-label">Your name:</label>
-    <input type="name" class="form-control" id="exampleFormControlInput1">
+    <input name="order[name]" type="name" class="form-control" id="exampleFormControlInput1">
   </div>
   <div class="mb-3">
     <label for="exampleFormControlInput1" class="form-label">Your address:</label>
-    <input type="address" class="form-control" id="exampleFormControlInput1">
+    <input name="order[address]" type="address" class="form-control" id="exampleFormControlInput1">
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <div class="mb-3">
+  <input name="order[orders_input]" id="orders_to_db" class="form-control">
+  </div>
+  <button type="submit" class="btn btn-primary" >Submit</button>
 </form>
-
-<script type="text/javascript">
-
-    $(function() {
-        update_orders_input();
-        update_orders_button();
-        orders_list();
-    });
-
-</script>

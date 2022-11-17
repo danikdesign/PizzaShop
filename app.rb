@@ -8,6 +8,9 @@ set :database, {adapter: "sqlite3", database: "pizzashop.db"}
 class Product < ActiveRecord::Base
 end
 
+class Order < ActiveRecord::Base
+end
+
 before do
   @products = Product.order 'is_best_offer DESC'
 end
@@ -29,5 +32,12 @@ post '/cart' do
 end
 
 post '/order' do
+  @order = Order.new params[:order]
 
+  if @order.save
+    erb 'Thank you. We received your order. Our manager will contact you soon'
+  else
+    @error = @order.errors.full_messages.first
+    erb :cart
+  end
 end
