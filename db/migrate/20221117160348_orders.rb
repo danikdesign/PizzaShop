@@ -4,6 +4,7 @@ class Orders < ActiveRecord::Migration[7.0]
       t.text :name
       t.text :phone
       t.text :orders_input
+      t.text :address
 
       t.timestamps
     end

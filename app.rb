@@ -3,7 +3,7 @@ require 'rubygems'
 require 'sinatra'
 require 'sinatra/activerecord'
 
-set :database, {adapter: "sqlite3", database: "pizzashop.db"}
+set :database,{adapter: "sqlite3", database: "pizzashop.db"}
 
 class Product < ActiveRecord::Base
 end
@@ -13,6 +13,7 @@ end
 
 before do
   @products = Product.all
+  @orders = Order.all
 end
 
 get '/' do
@@ -21,6 +22,10 @@ end
 
 get '/about' do
   erb :about
+end
+
+get '/cart' do
+  erb :cart
 end
 
 post '/cart' do
@@ -34,9 +39,23 @@ post '/cart' do
   erb :cart
 end
 
+post '/place_order' do
+  @order = Order.create params[:order]
+
+  erb :order_placed
+end
+
+get '/show_orders' do
+  @show_orders = Order.order 'created_at DESC'
+  @show_orders.each do |order|
+    order.orders_input = parse_orders_input order.orders_input
+  end
+
+  erb :show_orders
+end
 
 
-def parse_orders_input orders_input
+def parse_orders_input(orders_input)
   s1 = orders_input.split(',')
   arr = []
 
@@ -52,5 +71,5 @@ def parse_orders_input orders_input
     arr.push arr2
   end
 
-  return arr
+  arr
 end

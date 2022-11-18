@@ -1,0 +1,25 @@
+<h2>Orders</h2>
+<hr />
+  <% @show_orders.each do |order| %>
+  <h5>Order #<%= order.id %></h5>
+  <h6>Order placed at: <%= order.created_at %></h6>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">Order contents</th>
+      <th scope="col">Name</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Address</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td><%= order.orders_input %></td>
+      <td><%= order.name %></td>
+      <td><%= order.phone %></td>
+      <td><%= order.address %></td>
+    </tr>
+    </tbody>
+  </table>
+  <hr />
+  <% end %>

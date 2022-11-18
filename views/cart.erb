@@ -37,7 +37,7 @@
 <h4>To confirm your order, fill out the form below:</h4>
 <hr />
 
-<form action="/cart" method="post">
+<form action="/place_order" method="post">
 
   <input name="order[orders_input]" type="hidden" value="<%= @orders_input %>" />
 
@@ -53,9 +53,9 @@
 
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Shipping address</label>
-    <input name="order[phone]" type="text" class="form-control" placeholder="For example: 31, Groove str." value="">
+    <input name="order[address]" type="text" class="form-control" placeholder="For example: 31, Groove str." value="">
   </div>
 
-  <button type="submit" class="btn btn-success btn-lg">Place this order</button>
+  <button type="submit" class="btn btn-success btn-lg" onclick="window.localStorage.clear()">Place this order</button>
 
 </form>
