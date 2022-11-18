@@ -25,19 +25,22 @@ get '/about' do
 end
 
 get '/cart' do
-
-  erb 'Your cart is empty!'
+  erb :cart
 end
 
 post '/cart' do
   @orders_input = params[:orders_input]
   @items = parse_orders_input @orders_input
 
-  @items.each do |item|
-    item[0] = @products.find(item[0])
+  if @items.length == 0
+    erb :empty_cart
+  else
+    @items.each do |item|
+      item[0] = @products.find(item[0])
+    end
+    erb :cart
   end
 
-  erb :cart
 end
 
 post '/place_order' do

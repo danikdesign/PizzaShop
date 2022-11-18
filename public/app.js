@@ -41,7 +41,7 @@ function cart_get_number_of_items()
 
 function cart_get_orders()
 {
-    var orders = 0;
+    var orders = '';
 
     for(var i = 0; i < window.localStorage.length; i++)
     {
