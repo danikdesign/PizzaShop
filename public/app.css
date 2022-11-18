@@ -1,7 +1,11 @@
 #orders_button {
     background-color: #f8f8f8;
     border: none;
-    font-size: 20px;
-    padding: 4px 20px;
-    text-decoration: underline;
+    font-size: 15px;
+    margin: 5px 0px;
+}
+#cart_logo{
+    width: 30px;
+    height: 24px;
+    margin: 5px 0px;
 }

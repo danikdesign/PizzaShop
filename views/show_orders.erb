@@ -1,8 +1,8 @@
 <h2>Orders</h2>
 <hr />
   <% @show_orders.each do |order| %>
-  <h5>Order #<%= order.id %></h5>
-  <h6>Order placed at: <%= order.created_at %></h6>
+  <h5 class="text-primary">Order #<%= order.id %></h5>
+  <h6 class="text-danger">Order placed at: <%= order.created_at %></h6>
   <table class="table table-striped">
     <thead>
     <tr>

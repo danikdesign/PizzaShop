@@ -27,7 +27,7 @@
 		<div class="container">
 
 			<!-- Static navbar -->
-			<nav class="navbar navbar-expand-lg bg-light">
+			<nav class="navbar navbar-expand-lg  bg-transparent" style="margin-bottom: 5px;">
 				<div class="container-fluid">
 					<a class="navbar-brand mb-0 h1" href="/">
 						<img src="/images/logo.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
@@ -48,8 +48,11 @@
 						<ul class="nav navbar-nab navbar-right">
 							<li>
 								<form action="/cart" method="POST">
+									<span class="navbar-text">
+        						Your items:
+									</span>
 									<input id="orders_input" name="orders_input" type="hidden" />
-									<input id="orders_button" type="submit" value="Cart (...)" />
+									<input id="orders_button" class="bg-transparent text-primary" type="submit" /><img id="cart_logo" src="/images/cart.svg" alt="Cart">
 								</form>
 							</li>
 						</ul>
