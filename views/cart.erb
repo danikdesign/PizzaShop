@@ -1,63 +1,64 @@
 <h2>Your cart</h2>
 
-<table class="table table-striped">
-  <thead>
-  <tr>
-    <th scope="col">#</th>
-    <th scope="col">Pizza</th>
-    <th scope="col">Price</th>
-    <th scope="col">Quantity</th>
-  </tr>
-  </thead>
-  <tbody>
-  <% total_price = 0 %>
-  <% total_quantity = 0 %>
-    <% @items.each do |item| %>
-      <tr>
-        <td><%= item[0].id %></td>
-        <td><%= item[0].title %></td>
-        <td><%= item[0].price %></td>
-        <td><%= item[1] %></td>
-      </tr>
-      <% total_price += item[0].price * item[1].to_i %>
-      <% total_quantity += item[1].to_i %>
-    <% end %>
-
+  <div id="cart">
+  <table class="table table-striped">
+    <thead>
     <tr>
-      <th scope="row">Total:</th>
-      <td></td>
-      <td><%= total_price %></td>
-      <td><%= total_quantity %></td>
+      <th scope="col">#</th>
+      <th scope="col">Pizza</th>
+      <th scope="col">Price</th>
+      <th scope="col">Quantity</th>
     </tr>
+    </thead>
+    <tbody>
+    <% total_price = 0 %>
+    <% total_quantity = 0 %>
+      <% @items.each do |item| %>
+        <tr>
+          <td><%= item[0].id %></td>
+          <td><%= item[0].title %></td>
+          <td><%= item[0].price %></td>
+          <td><%= item[1] %></td>
+        </tr>
+        <% total_price += item[0].price * item[1].to_i %>
+        <% total_quantity += item[1].to_i %>
+      <% end %>
 
-  </tbody>
-</table>
+      <tr>
+        <th scope="row">Total:</th>
+        <td></td>
+        <td><%= total_price %></td>
+        <td><%= total_quantity %></td>
+      </tr>
 
-<hr />
-<h4>To confirm your order, fill out the form below:</h4>
-<hr />
+    </tbody>
+  </table>
 
-<form action="/place_order" method="post">
+  <hr />
+  <h4>To confirm your order, fill out the form below:</h4>
+  <hr />
 
-  <input name="order[orders_input]" type="hidden" value="<%= @orders_input %>" />
+  <form action="/place_order" method="post">
 
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Your name</label>
-    <input name="order[name]" type="text" class="form-control" placeholder="Type your name" value="">
-  </div>
+    <input name="order[orders_input]" type="hidden" value="<%= @orders_input %>" />
 
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Your phone number</label>
-    <input name="order[phone]" type="text" class="form-control" placeholder="For example: +1 (123) 456 789 0" value="">
-  </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Your name</label>
+      <input name="order[name]" type="text" class="form-control" placeholder="Type your name" value="">
+    </div>
 
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Shipping address</label>
-    <input name="order[address]" type="text" class="form-control" placeholder="For example: 31, Groove str." value="">
-  </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Your phone number</label>
+      <input name="order[phone]" type="text" class="form-control" placeholder="For example: +1 (123) 456 789 0" value="">
+    </div>
 
-  <button type="submit" class="btn btn-success btn-lg">Place this order</button>
-  <button type="button" class="btn btn-danger" onclick="cancel_order()">Cancel</button>
-</form>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Shipping address</label>
+      <input name="order[address]" type="text" class="form-control" placeholder="For example: 31, Groove str." value="">
+    </div>
 
+    <button type="submit" class="btn btn-success btn-lg">Place this order</button>
+    <button type="button" class="btn btn-danger" onclick="cancel_order()">Cancel</button>
+  </form>
+</div>
 
